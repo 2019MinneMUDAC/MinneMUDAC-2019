@@ -1,0 +1,45 @@
+---
+title: "MUDAC"
+author: "Karen Wang"
+date: "10/6/2019"
+output: pdf_document
+---
+
+```{r, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(lme4)
+library(knitr)
+library(kableExtra)
+library(broom)
+library(readxl)
+```
+
+```{r, include=FALSE}
+
+#Creating different data sets
+
+MUDAC <- read_excel("MUDAC.xls")
+
+US_Markets <- MUDAC[c(11:611),c(1:29)]
+colnames(US_Markets) = US_Markets[1, ] 
+US_Markets = US_Markets[-1, ]
+US_Markets$season <- NA
+
+#doesn't work sry
+attach(US_Markets)
+US_Markets$season[month = 12|1|2] <- "Winter"
+US_Markets$season[month = 3|4|5] <- "Spring"
+US_Markets$season[month = 6|7|8] <- "Summer"
+US_Markets$season[month = 11|10|9] <- "Autumn"
+detach(US_Markets)
+
+US_Competitors <- MUDAC[c(11:611),c(1,2,31:55)]
+colnames(US_Competitors) = US_Competitors[1, ] 
+US_Competitors = US_Competitors[-1, ]
+
+US_Suppliers <- MUDAC[c(11:611),c(1,2,57:78)]
+colnames(US_Suppliers) = US_Suppliers[1, ] 
+US_Suppliers = US_Suppliers[-1, ]
+```
