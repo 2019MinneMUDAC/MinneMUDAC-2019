@@ -13,6 +13,7 @@ library(lme4)
 library(knitr)
 d
 d
+d
 library(kableExtra)
 library(broom)
 library(readxl)
