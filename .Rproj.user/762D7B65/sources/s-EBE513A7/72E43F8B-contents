@@ -1,0 +1,60 @@
+---
+title: "MUDAC Cleaning Data"
+author: "Karen Wang"
+date: "10/6/2019"
+output: pdf_document
+---
+
+```{r, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(lme4)
+library(knitr)
+d
+library(kableExtra)
+library(broom)
+library(readxl)
+```
+
+```{r, include=FALSE}
+
+#Creating different data sets
+
+MUDAC <- read_excel("MUDAC.xls")
+
+US_Markets <- MUDAC[c(11:611),c(1:29)]
+colnames(US_Markets) = US_Markets[1, ] 
+US_Markets = US_Markets[-1, ]
+US_Markets$Season <- NA
+US_Markets$Season[Month==12|Month==1|Month==2] <- "Winter"
+US_Markets$Season[Month==3|Month==4|Month==5] <- "Spring"
+US_Markets$Season[Month==6|Month==7|Month==8] <- "Summer"
+US_Markets$Season[Month==11|Month==10|Month==9] <- "Autumn"
+
+
+US_Competitors <- MUDAC[c(11:611),c(1,2,31:55)]
+colnames(US_Competitors) = US_Competitors[1, ] 
+US_Competitors = US_Competitors[-1, ]
+US_Competitors$Season <- NA
+US_Competitors$Season[Month==12|Month==1|Month==2] <- "Winter"
+US_Competitors$Season[Month==3|Month==4|Month==5] <- "Spring"
+US_Competitors$Season[Month==6|Month==7|Month==8] <- "Summer"
+US_Competitors$Season[Month==11|Month==10|Month==9] <- "Autumn"
+
+US_Suppliers <- MUDAC[c(11:611),c(1,2,57:78)]
+colnames(US_Suppliers) = US_Suppliers[1, ] 
+US_Suppliers = US_Suppliers[-1, ]
+US_Suppliers$Season <- NA
+US_Suppliers$Season[Month==12|Month==1|Month==2] <- "Winter"
+US_Suppliers$Season[Month==3|Month==4|Month==5] <- "Spring"
+US_Suppliers$Season[Month==6|Month==7|Month==8] <- "Summer"
+US_Suppliers$Season[Month==11|Month==10|Month==9] <- "Autumn"
+
+write.csv(US_Markets, file = "US_Markets.csv")
+write.csv(US_Competitors, file = "US_Competitors.csv")
+write.csv(US_Suppliers, file = "US_Suppliers.csv")
+write.csv(US_Markets, file = "US_Markets.csv")
+write.csv(US_Competitors, file = "US_Competitors.csv")
+write.csv(MUDAC, file = "MUDAC.csv")
+```

@@ -11,6 +11,7 @@ library(dplyr)
 library(tidyr)
 library(lme4)
 library(knitr)
+d
 library(kableExtra)
 library(broom)
 library(readxl)
