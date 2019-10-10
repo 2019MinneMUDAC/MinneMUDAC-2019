@@ -14,6 +14,7 @@ library(knitr)
 d
 d
 d
+d
 library(kableExtra)
 library(broom)
 library(readxl)
