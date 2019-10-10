@@ -12,6 +12,7 @@ library(tidyr)
 library(lme4)
 library(knitr)
 d
+d
 library(kableExtra)
 library(broom)
 library(readxl)
